@@ -1,0 +1,12 @@
+{
+  "presets": ["next/bebel"],
+  "plugins": [
+    [
+      "styled-components",
+      {
+        "ssr": true,
+        "displayName": true
+      }
+    ]
+  ]
+}
