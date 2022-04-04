@@ -1,5 +1,5 @@
 {
-  "presets": ["next/bebel"],
+  "presets": ["next/babel"],
   "plugins": [
     [
       "styled-components",
