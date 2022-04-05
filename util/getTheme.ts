@@ -3,12 +3,12 @@ import local from "./local";
 import { ETheme } from "../enum/theme/Theme.enum";
 
 export const getTheme = (): ETheme => {
-  const theme = local.get(THEME_KEY);
+  const themeMode = local.get(THEME_KEY);
 
   //localStorage에 theme 이 없을때
-  if (typeof window !== "undefined" && theme === null) {
-    const isDarkTheme = window.matchMedia(
-      `(prefers-color-scheme: dark)`
+  if (typeof window !== "undefined" && themeMode === null) {
+    const isDarkTheme: boolean = window.matchMedia(
+      `(prefers-color-scheme: light)`
     ).matches;
 
     if (isDarkTheme) {
@@ -16,6 +16,8 @@ export const getTheme = (): ETheme => {
     }
     return ETheme.LIGHT;
   }
+
+  const theme: ETheme = themeMode as ETheme;
 
   //localStorage에 theme 이 있을때
   if (theme === ETheme.DARK) {

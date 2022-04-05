@@ -5,7 +5,7 @@ import ThemeProviderContainer from "../components/ThemeProviderContainer/ThemePr
 function App({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
       <ThemeProviderContainer Component={Component} pageProps={pageProps} />
     </RecoilRoot>
   );

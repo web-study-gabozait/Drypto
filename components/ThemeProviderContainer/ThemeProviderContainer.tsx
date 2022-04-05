@@ -1,6 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import useTheme from "../../hooks/theme/useTheme";
 import GlobalStyle from "../../styles/GlobalStyle";
+import PageTemplate from "../common/PageTemplate";
 
 const ThemeProviderContainer = ({ Component, pageProps }: any) => {
   const { theme } = useTheme();
@@ -8,7 +9,9 @@ const ThemeProviderContainer = ({ Component, pageProps }: any) => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Component {...pageProps} />
+      <PageTemplate>
+        <Component {...pageProps} />
+      </PageTemplate>
     </ThemeProvider>
   );
 };

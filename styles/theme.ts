@@ -3,6 +3,7 @@ import { palette } from "./palette";
 
 export const lightTheme: DefaultTheme = {
   ...palette,
+
   backgroundColor: "#ffffff",
 };
 

@@ -12,7 +12,7 @@ const useTheme = () => {
 
   const toggleChangeTheme = (): void => {
     const switchTheme = currentTheme === LIGHT ? DARK : LIGHT;
-    local.set(THEME_KEY, switchTheme.toString());
+    local.set(THEME_KEY, String(switchTheme));
     setCurrentTheme(switchTheme);
   };
 

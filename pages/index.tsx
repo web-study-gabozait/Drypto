@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Main from "../components/main/Main";
 
 const Home: NextPage = () => {
   return (
@@ -11,6 +12,7 @@ const Home: NextPage = () => {
           content="자기가 관심있어하는 비트코인을 조회 해보세요."
         />
       </Head>
+      <Main />
     </div>
   );
 };
