@@ -2,31 +2,29 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 import Header from "../header/Header";
 
-1130;
-
 type Props = {
   children: ReactNode;
 };
 
 const PageTemplate = ({ children }: Props) => {
   return (
-    <Container>
+    <TemplateContainer>
       <Header />
-      <ChildrenWrap>{children}</ChildrenWrap>
-    </Container>
+      <TemplateChildrenWrap>{children}</TemplateChildrenWrap>
+    </TemplateContainer>
   );
 };
 
-const Container = styled.div`
+const TemplateContainer = styled.div`
   width: 100%;
+  background-color: ${({ theme }) => theme.backgroundColor};
 `;
 
-const ChildrenWrap = styled.div`
+const TemplateChildrenWrap = styled.div`
   width: 1130px;
   min-height: calc(100vh - 74px);
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.backgroundColor};
   margin: 0px auto;
 `;
 

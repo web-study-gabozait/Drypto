@@ -1,3 +1,4 @@
+import { useCallback, useMemo } from "react";
 import { useRecoilState } from "recoil";
 import { THEME_KEY } from "../../constants/theme.constants";
 import { ETheme } from "../../enum/theme/Theme.enum";
@@ -10,13 +11,15 @@ const useTheme = () => {
 
   const { LIGHT, DARK } = ETheme;
 
-  const toggleChangeTheme = (): void => {
+  const toggleChangeTheme = useCallback((): void => {
     const switchTheme = currentTheme === LIGHT ? DARK : LIGHT;
     local.set(THEME_KEY, String(switchTheme));
     setCurrentTheme(switchTheme);
-  };
+  }, [DARK, LIGHT, currentTheme, setCurrentTheme]);
 
-  const theme = currentTheme === LIGHT ? darkTheme : lightTheme;
+  const theme = useMemo(() => {
+    return currentTheme === LIGHT ? darkTheme : lightTheme;
+  }, [currentTheme, LIGHT]);
 
   return { toggleChangeTheme, theme };
 };

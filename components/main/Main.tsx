@@ -1,7 +1,7 @@
-import { MainWrap } from "./style";
+import { TEST } from "./style";
 
 const Main = () => {
-  return <MainWrap></MainWrap>;
+  return <TEST></TEST>;
 };
 
 export default Main;

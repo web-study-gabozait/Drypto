@@ -1,17 +1,14 @@
 import { ThemeProvider } from "styled-components";
 import useTheme from "../../hooks/theme/useTheme";
 import GlobalStyle from "../../styles/GlobalStyle";
-import PageTemplate from "../common/PageTemplate";
 
-const ThemeProviderContainer = ({ Component, pageProps }: any) => {
+const ThemeProviderContainer = ({ Component, pageProps }: any): JSX.Element => {
   const { theme } = useTheme();
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <PageTemplate>
-        <Component {...pageProps} />
-      </PageTemplate>
+      <Component {...pageProps} />
     </ThemeProvider>
   );
 };
