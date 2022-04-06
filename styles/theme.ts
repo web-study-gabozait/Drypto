@@ -5,9 +5,11 @@ export const lightTheme: DefaultTheme = {
   ...palette,
 
   backgroundColor: "#ffffff",
+  contrast: "#000000",
 };
 
 export const darkTheme: DefaultTheme = {
   ...palette,
-  backgroundColor: "#333333",
+  backgroundColor: "#000000",
+  contrast: "#ffffff",
 };

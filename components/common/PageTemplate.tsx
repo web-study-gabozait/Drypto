@@ -17,6 +17,7 @@ const PageTemplate = ({ children }: Props) => {
 
 const TemplateContainer = styled.div`
   width: 100%;
+  height: 100vh;
   background-color: ${({ theme }) => theme.backgroundColor};
 `;
 

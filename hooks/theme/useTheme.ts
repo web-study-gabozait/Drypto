@@ -17,11 +17,15 @@ const useTheme = () => {
     setCurrentTheme(switchTheme);
   }, [DARK, LIGHT, currentTheme, setCurrentTheme]);
 
-  const theme = useMemo(() => {
+  const providerTheme = useMemo(() => {
     return currentTheme === LIGHT ? darkTheme : lightTheme;
   }, [currentTheme, LIGHT]);
 
-  return { toggleChangeTheme, theme };
+  const theme = useMemo(() => {
+    return currentTheme === LIGHT ? DARK : LIGHT;
+  }, [DARK, LIGHT, currentTheme]);
+
+  return { toggleChangeTheme, providerTheme, theme };
 };
 
 export default useTheme;

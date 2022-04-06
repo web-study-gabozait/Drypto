@@ -1,12 +1,15 @@
+import { ReactNode } from "react";
 import styled from "styled-components";
 
 type Props = {
-  title: string;
+  children: ReactNode;
   onClick: () => void;
 };
 
-const HeaderItem = ({ title, onClick }: Props) => {
-  return <HeaderItemContainer onClick={onClick}>{title}</HeaderItemContainer>;
+const HeaderItem = ({ children, onClick }: Props) => {
+  return (
+    <HeaderItemContainer onClick={onClick}>{children}</HeaderItemContainer>
+  );
 };
 
 const HeaderItemContainer = styled.button`
@@ -14,10 +17,13 @@ const HeaderItemContainer = styled.button`
   height: 36px;
   background: none;
   border-radius: 100%;
-
-  &:hover {
-    background-color: #eee;
-  }
+  border: 1px;
+  color: ${({ theme }) => theme.contrast};
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 `;
 
 export default HeaderItem;
