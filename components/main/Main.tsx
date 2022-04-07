@@ -1,7 +1,13 @@
-import { TEST } from "./style";
+import { useEffect } from "react";
+import mainRepository from "../../repository/main/main.repository";
+import { MainContainer } from "./style";
 
 const Main = () => {
-  return <TEST></TEST>;
+  useEffect(() => {
+    mainRepository.getCoins();
+  }, []);
+
+  return <MainContainer></MainContainer>;
 };
 
 export default Main;
