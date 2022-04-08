@@ -53,15 +53,15 @@ const toastCase = (message: string, type: string): void => {
 };
 
 class Toast {
-  public static success(message: string): void {
+  public success(message: string): void {
     toastCase(message, "SUCCESS");
   }
 
-  public static error(message: string): void {
+  public error(message: string): void {
     toastCase(message, "ERROR");
   }
 
-  public static info(message: string): void {
+  public info(message: string): void {
     toastCase(message, "INFO");
   }
 }

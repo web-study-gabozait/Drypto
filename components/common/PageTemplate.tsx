@@ -17,13 +17,13 @@ const PageTemplate = ({ children }: Props) => {
 
 const TemplateContainer = styled.div`
   width: 100%;
-  height: 100vh;
   background-color: ${({ theme }) => theme.backgroundColor};
 `;
 
 const TemplateChildrenWrap = styled.div`
   width: 1130px;
   min-height: calc(100vh - 74px);
+  height: auto;
   display: flex;
   flex-direction: column;
   margin: 0px auto;

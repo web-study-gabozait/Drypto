@@ -2,6 +2,7 @@ import { GetServerSideProps } from "next";
 import { dehydrate, QueryClient } from "react-query";
 import { useCoins } from "../../hooks/main/useCoins";
 import mainRepository from "../../repository/main/main.repository";
+import MainCardList from "./mainCardList/MainCardList";
 import { MainContainer } from "./style";
 
 const Main = () => {
@@ -9,7 +10,11 @@ const Main = () => {
 
   console.log(data);
 
-  return <MainContainer>{data?.map((item) => item.id)}</MainContainer>;
+  return (
+    <MainContainer>
+      <MainCardList data={data ? data : null} />
+    </MainContainer>
+  );
 };
 
 export default Main;
