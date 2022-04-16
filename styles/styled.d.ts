@@ -5,5 +5,6 @@ declare module "styled-components" {
     backgroundColor: string;
     coinCardBg: string;
     contrast: string;
+    subText: string;
   }
 }

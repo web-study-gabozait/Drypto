@@ -9,11 +9,6 @@ export const MainCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  cursor: pointer;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
 `;
 
 export const MainCardTitle = styled.h1`
@@ -21,4 +16,28 @@ export const MainCardTitle = styled.h1`
   line-height: 1.86;
   font-weight: 700;
   color: ${({ theme }) => theme.contrast};
+`;
+
+export const MainCardDetailButton = styled.button`
+  background: none;
+  border: 0px;
+  margin-left: auto;
+  margin-top: auto;
+  text-decoration: underline;
+  color: ${({ theme }) => theme.subText};
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  cursor: pointer;
+
+  p {
+    font-size: 14px;
+  }
+
+  div {
+    width: 14px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
 `;

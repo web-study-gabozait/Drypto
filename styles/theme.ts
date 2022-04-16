@@ -7,6 +7,7 @@ export const lightTheme: DefaultTheme = {
   backgroundColor: "#ffffff",
   coinCardBg: "#f9fafb",
   contrast: "#000000",
+  subText: "#dbdbdb",
 };
 
 export const darkTheme: DefaultTheme = {
@@ -14,4 +15,5 @@ export const darkTheme: DefaultTheme = {
   backgroundColor: "#000000",
   coinCardBg: "#262626",
   contrast: "#ffffff",
+  subText: "#dbdbdb",
 };

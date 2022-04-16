@@ -1,4 +1,4 @@
-import type { AppProps } from "next/app";
+import type { AppProps, AppContext } from "next/app";
 import React from "react";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
 import { RecoilRoot } from "recoil";
@@ -17,5 +17,17 @@ function App({ Component, pageProps }: AppProps) {
     </QueryClientProvider>
   );
 }
+
+export const getInitialProps = async ({ Component, ctx }: AppContext) => {
+  let pageProps = {};
+
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+
+  return {
+    pageProps,
+  };
+};
 
 export default App;

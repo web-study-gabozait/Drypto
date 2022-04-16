@@ -1,14 +1,12 @@
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import { dehydrate, QueryClient } from "react-query";
 import { useCoins } from "../../hooks/main/useCoins";
 import mainRepository from "../../repository/main/main.repository";
 import MainCardList from "./mainCardList/MainCardList";
 import { MainContainer } from "./style";
 
-const Main = () => {
+const Main: NextPage = () => {
   const { isLoading, data } = useCoins();
-
-  console.log(data);
 
   return (
     <MainContainer>
@@ -16,8 +14,6 @@ const Main = () => {
     </MainContainer>
   );
 };
-
-export default Main;
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const queryClient = new QueryClient();
@@ -34,3 +30,5 @@ export const getServerSideProps: GetServerSideProps = async () => {
     },
   };
 };
+
+export default Main;
