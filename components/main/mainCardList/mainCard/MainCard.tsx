@@ -5,6 +5,7 @@ import {
   MainCardTitle,
 } from "./style";
 import { FiArrowRight } from "@react-icons/all-files/fi/FiArrowRight";
+import Link from "next/link";
 
 type Props = {
   data: Coin;
@@ -15,7 +16,11 @@ const MainCard = ({ data }: Props) => {
     <MainCardContainer>
       <MainCardTitle>{data.name}</MainCardTitle>
       <MainCardDetailButton>
-        <p>자세히 보기</p>
+        <Link href="/coinDetail/222">
+          <a>
+            <p>자세히 보기</p>
+          </a>
+        </Link>
         <div>
           <FiArrowRight />
         </div>

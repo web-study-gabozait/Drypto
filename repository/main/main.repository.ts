@@ -6,7 +6,8 @@ class MainRepository {
   public async getCoins(): Promise<CoinsReponse | null> {
     try {
       const { data } = await customAxios.get<CoinsReponse>("/coins");
-      return data.slice(0, 200);
+
+      return data;
     } catch (error) {
       return null;
     }

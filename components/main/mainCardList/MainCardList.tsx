@@ -5,6 +5,7 @@ import { MainCardListContainer } from "./style";
 type Props = {
   data: Coin[] | null;
 };
+
 const MainCardList = ({ data }: Props) => {
   return (
     <MainCardListContainer>
