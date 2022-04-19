@@ -1,13 +1,13 @@
+import { COINS_MAX_NUM } from "../../constants/product.constants";
 import customAxios from "../../lib/axios";
-import toast from "../../lib/toast";
-import { CoinsReponse } from "../../types/main/main.type";
+import { CoinsResponse } from "../../types/main/main.type";
 
 class MainRepository {
-  public async getCoins(): Promise<CoinsReponse | null> {
+  public async getCoins(): Promise<CoinsResponse | null> {
     try {
-      const { data } = await customAxios.get<CoinsReponse>("/coins");
+      const { data } = await customAxios.get<CoinsResponse>("/coins");
 
-      return data;
+      return data.slice(0, COINS_MAX_NUM);
     } catch (error) {
       return null;
     }

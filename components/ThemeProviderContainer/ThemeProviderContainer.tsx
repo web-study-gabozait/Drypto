@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 import { ThemeProvider } from "styled-components";
 import useTheme from "../../hooks/theme/useTheme";
 import GlobalStyle from "../../styles/GlobalStyle";
@@ -8,6 +9,7 @@ const ThemeProviderContainer = ({ Component, pageProps }: any): JSX.Element => {
 
   return (
     <ThemeProvider theme={providerTheme}>
+      <ToastContainer />
       <GlobalStyle />
       <PageTemplate>
         <Component {...pageProps} />

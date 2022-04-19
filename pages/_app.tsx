@@ -18,4 +18,16 @@ function App({ Component, pageProps }: AppProps) {
   );
 }
 
+export const getInitialProps = async ({ Component, ctx }: AppContext) => {
+  let pageProps = {};
+
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+
+  return {
+    pageProps,
+  };
+};
+
 export default App;

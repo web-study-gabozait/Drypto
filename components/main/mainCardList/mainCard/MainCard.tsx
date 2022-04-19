@@ -16,7 +16,7 @@ const MainCard = ({ data }: Props) => {
     <MainCardContainer>
       <MainCardTitle>{data.name}</MainCardTitle>
       <MainCardDetailButton>
-        <Link href="/coinDetail/222">
+        <Link href={`/coinDetail/${data.id}`}>
           <a>
             <p>자세히 보기</p>
           </a>

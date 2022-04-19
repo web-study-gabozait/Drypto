@@ -1,14 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
-import { useQuery } from "react-query";
+import toast from "../../lib/toast";
 import coinDetailRepository from "../../repository/coinDetail/coinDetail.repository";
-import { CoinDetail } from "../../types/common/common.type";
-
-// type Param = {
-//   coinid: string;
-// };
-
-// export const useCoin = ({ coinid }: Param) =>
-//   useQuery("coinDetail", () => coinDetailRepository.getCoin({ coinid }));
 
 const useCoin = () => {
   const getCoinInfo = async (coinid: string) => {
@@ -16,6 +7,8 @@ const useCoin = () => {
       const data = await coinDetailRepository.getCoin({ coinid });
       return data;
     } catch (error) {
+      toast.error("코인 상세정보 불러오기 실패");
+
       return null;
     }
   };
