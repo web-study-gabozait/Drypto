@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
+    "apexcharts": "^3.35.0",
     "axios": "^0.26.1",
     "next": "12.1.4",
     "react": "18.0.0",
+    "react-apexcharts": "^1.4.0",
     "react-dom": "18.0.0",
     "react-query": "^3.34.19",
     "react-toastify": "^8.2.0",

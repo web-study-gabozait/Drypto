@@ -3,12 +3,31 @@ export type Coin = {
   name: string;
   symbol: string;
   rank: number;
-  is_new: false;
-  is_active: true;
+  is_new: boolean;
+  is_active: boolean;
   type: string;
 };
 
 export type CoinDetail = {
+  id: string;
+  name: string;
+  symbol: string;
+  rank: number;
+  is_new: boolean;
+  is_active: boolean;
+  type: string;
+  contract: string;
+  contracts: CoinDetailContract[];
+  description: string;
+};
+
+export type CoinDetailContract = {
+  contract: string;
+  platform: string;
+  type: string;
+};
+
+export type CoinTicker = {
   id: string;
   name: string;
   symbol: string;
@@ -40,4 +59,15 @@ export type CoinDetail = {
       volume_24h_change_24h: number;
     };
   };
+};
+
+export type CoinHistorical = {
+  time_open: string;
+  time_close: string;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  volume: number;
+  market_cap: number;
 };
