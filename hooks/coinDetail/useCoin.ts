@@ -50,7 +50,7 @@ const useCoin = ({ coinid, isClient }: Props) => {
     if (isClient) {
       getCoinInfo(coinid);
     }
-  }, []);
+  }, [isClient]);
 
   return {
     coinDetailData,

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { palette } from "../../styles/palette";
 
 export const CoinDetailHLine = styled.hr<{ width: string }>`
@@ -32,6 +32,7 @@ export const CoinDetailTopBox = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
 `;
 
 export const CoinDetailTopName = styled.h1`
@@ -84,4 +85,44 @@ export const CoinDetailTopInfoItem = styled.div`
   span {
     color: ${palette.gray[200]};
   }
+`;
+
+export const CoinDetailMiddleBox = styled.div`
+  width: 770px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const CoinDetailMiddleCategoryWrap = styled.div`
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  column-gap: 20px;
+  border-bottom: 1px solid ${palette.gray[200]};
+`;
+
+export const CoinDetailMiddleCategoryItem = styled.div<{ isSelect: boolean }>`
+  height: 100%;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  box-sizing: content-box;
+  letter-spacing: -0.8px;
+
+  &hover {
+    transition: 0.5s;
+    color: ${({ theme }) => theme.contrast};
+  }
+
+  ${({ isSelect }) =>
+    isSelect
+      ? css`
+          color: ${({ theme }) => theme.contrast};
+          border-bottom: 3px solid ${({ theme }) => theme.contrast};
+        `
+      : css`
+          color: ${palette.gray[200]};
+        `}
 `;

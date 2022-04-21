@@ -1,9 +1,13 @@
+import { useState } from "react";
+import { COIN_DETAIL_CATEGORY } from "../../constants/product.constants";
 import {
   CoinDetail as CoinDetailType,
   CoinHistorical as CoinHistoricalType,
   CoinTicker as CoinTickerType,
 } from "../../types/common/common.type";
 import CoinDetailChart from "./CoinDetailChart";
+import CoinDetailQuote from "./coinDetailQuote/CoinDetailTable";
+
 import {
   CoinDetailHLine,
   CoinDetailTopBox,
@@ -16,6 +20,9 @@ import {
   CoinDetailTopInfoWrap,
   CoinDetailTopInfoItem,
   CoinDetailVLine,
+  CoinDetailMiddleBox,
+  CoinDetailMiddleCategoryWrap,
+  CoinDetailMiddleCategoryItem,
 } from "./style";
 
 type Props = {
@@ -30,6 +37,8 @@ const CoinDetail = ({
   coinHistoricalData,
 }: Props) => {
   console.log(coinDetailData, coinTickerData, coinHistoricalData);
+
+  const [category, setCategory] = useState("일별시세");
 
   return (
     <>
@@ -75,6 +84,22 @@ const CoinDetail = ({
           </>
         )}
       </CoinDetailTopBox>
+      <CoinDetailMiddleBox>
+        <CoinDetailMiddleCategoryWrap>
+          {COIN_DETAIL_CATEGORY.map((item) => (
+            <CoinDetailMiddleCategoryItem
+              isSelect={category === item.title}
+              key={`coinDetail_${item.title}`}
+              onClick={() => setCategory(item.title)}
+            >
+              {item.title}
+            </CoinDetailMiddleCategoryItem>
+          ))}
+        </CoinDetailMiddleCategoryWrap>
+        {category === "일별시세" && (
+          <CoinDetailQuote coinHistoricalData={coinHistoricalData} />
+        )}
+      </CoinDetailMiddleBox>
     </>
   );
 };

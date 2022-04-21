@@ -1,8 +1,10 @@
-import ApexCharts from "react-apexcharts";
 import styled from "styled-components";
 import { palette } from "../../styles/palette";
 import { CoinHistorical } from "../../types/common/common.type";
 import { CoinDetailTopTitle } from "./style";
+import dynamic from "next/dynamic";
+
+const ApexCharts = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 type Props = {
   coinHistoricalData: CoinHistorical[];
@@ -11,7 +13,7 @@ type Props = {
 const CoinDetailChart = ({ coinHistoricalData }: Props) => {
   return (
     <ChartWrap>
-      <CoinDetailTopTitle>시세 차트</CoinDetailTopTitle>
+      <CoinDetailTopTitle>시가 차트</CoinDetailTopTitle>
       <ChartItem>
         <ApexCharts
           type="area"
