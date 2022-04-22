@@ -3,16 +3,17 @@ import {
   CoinResponse,
   CoinTickersResponse,
 } from "../../types/coinDetail/coinDetail.type";
+import { CoinDetail } from "../../types/common/common.type";
 import { GetCoinParam, GetCoinTickersParam } from "./coinDetail.param";
 
 class CoinRepository {
   public async getCoin({ coinid }: GetCoinParam): Promise<CoinResponse | null> {
     try {
-      const { data } = await customAxios.get<CoinResponse>(
+      const { data } = await customAxios.get<CoinDetail[]>(
         `/ticker?markets=${coinid}`
       );
 
-      return data;
+      return data[0];
     } catch (error) {
       return null;
     }

@@ -47,13 +47,50 @@ export const CoinDetailTopValueWrap = styled.div`
   align-items: flex-end;
 `;
 
-export const CoinDetailTopValue = styled.div`
+export const CoinDetailTopValue = styled.h1`
   font-size: 26px;
   font-weight: 700;
   color: white;
 `;
 
-export const CoinDetailTopValueDate = styled.div`
+export const CoinDetailTopChangeWrap = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+`;
+
+export const CoinDetailTopChangePoint = styled.span<{
+  change: string;
+}>`
+  border-style: solid;
+  border-width: 7px 4.5px 0 4.5px;
+
+  ${({ change }) =>
+    change === "RISE" &&
+    css`
+      transform: rotate(-180deg);
+      border-color: ${palette.red[300]} transparent transparent transparent;
+    `};
+
+  ${({ change }) =>
+    change === "EVEN" &&
+    css`
+      border-color: ${palette.gray[200]} transparent transparent transparent;
+    `};
+
+  ${({ change }) =>
+    change === "FALL" &&
+    css`
+      border-color: ${palette.blue[700]} transparent transparent transparent;
+    `};
+`;
+
+export const CoinDetailTopChangeValue = styled.p`
+  font-size: 14px;
+  color: white;
+`;
+
+export const CoinDetailTopValueDate = styled.p`
   font-size: 12px;
   color: ${palette.gray[400]};
   margin-left: 10px;

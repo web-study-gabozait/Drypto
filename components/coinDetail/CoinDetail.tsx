@@ -1,9 +1,11 @@
+import dayjs from "dayjs";
 import { useState } from "react";
 import { COIN_DETAIL_CATEGORY } from "../../constants/product.constants";
 import {
   CoinDetail as CoinDetailType,
   CoinTicker as CoinTickerType,
 } from "../../types/common/common.type";
+import transformMoney from "../../util/transformMoney";
 import CoinDetailChart from "./CoinDetailChart";
 import CoinDetailQuote from "./coinDetailQuote/CoinDetailTable";
 
@@ -22,6 +24,9 @@ import {
   CoinDetailMiddleBox,
   CoinDetailMiddleCategoryWrap,
   CoinDetailMiddleCategoryItem,
+  CoinDetailTopChangeWrap,
+  CoinDetailTopChangePoint,
+  CoinDetailTopChangeValue,
 } from "./style";
 
 type Props = {
@@ -45,10 +50,16 @@ const CoinDetail = ({ coinDetailData, coinTickersData }: Props) => {
             <CoinDetailTopName>{coinDetailData?.market}</CoinDetailTopName>
             <CoinDetailTopValueWrap>
               <CoinDetailTopValue>
-                {coinDetailData?.opening_price}원
+                {transformMoney.korea(coinDetailData?.prev_closing_price)}원
               </CoinDetailTopValue>
+              <CoinDetailTopChangeWrap>
+                <CoinDetailTopChangePoint change={coinDetailData.change} />
+                <CoinDetailTopChangeValue>
+                  {coinDetailData.signed_change_price}
+                </CoinDetailTopChangeValue>
+              </CoinDetailTopChangeWrap>
               <CoinDetailTopValueDate>
-                {coinDetailData.trade_date}
+                {dayjs(coinDetailData.trade_date).format("YYYY.MM.DD")} 종가기준
               </CoinDetailTopValueDate>
             </CoinDetailTopValueWrap>
             <CoinDetailHLine width={"100%"} />

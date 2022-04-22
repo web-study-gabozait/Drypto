@@ -32,18 +32,10 @@ const CoinDetailQuote = ({ coinTickersData }: Props) => {
             <CoinDetailQuoteTd style={{ textAlign: "left" }}>
               {quote.candle_date_time_utc.slice(0, 10)}
             </CoinDetailQuoteTd>
-            <CoinDetailQuoteTd>
-              {quote.opening_price.toLocaleString("ko-KR")}
-            </CoinDetailQuoteTd>
-            <CoinDetailQuoteTd>
-              {transformMoney.korea(quote.high_price)}
-            </CoinDetailQuoteTd>
-            <CoinDetailQuoteTd>
-              {transformMoney.korea(quote.low_price)}
-            </CoinDetailQuoteTd>
-            <CoinDetailQuoteTd>
-              {transformMoney.korea(quote.prev_closing_price)}
-            </CoinDetailQuoteTd>
+            <CoinDetailQuoteTd>{quote.opening_price}</CoinDetailQuoteTd>
+            <CoinDetailQuoteTd>{quote.high_price}</CoinDetailQuoteTd>
+            <CoinDetailQuoteTd>{quote.low_price}</CoinDetailQuoteTd>
+            <CoinDetailQuoteTd>{quote.prev_closing_price}</CoinDetailQuoteTd>
           </tr>
         ))}
       </tbody>
