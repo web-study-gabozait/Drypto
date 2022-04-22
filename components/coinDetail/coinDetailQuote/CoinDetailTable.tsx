@@ -1,4 +1,4 @@
-import { CoinHistorical } from "../../../types/common/common.type";
+import { CoinTicker } from "../../../types/common/common.type";
 import transformMoney from "../../../util/transformMoney";
 import {
   CoinDetailQuoteTable,
@@ -7,11 +7,11 @@ import {
 } from "./style";
 
 type Props = {
-  coinHistoricalData: CoinHistorical[] | null;
+  coinTickersData: CoinTicker[] | null;
 };
 
-const CoinDetailQuote = ({ coinHistoricalData }: Props) => {
-  console.log(coinHistoricalData);
+const CoinDetailQuote = ({ coinTickersData }: Props) => {
+  console.log(coinTickersData);
 
   return (
     <CoinDetailQuoteTable>
@@ -20,29 +20,29 @@ const CoinDetailQuote = ({ coinHistoricalData }: Props) => {
           <CoinDetailQuoteTh style={{ textAlign: "left" }}>
             일자
           </CoinDetailQuoteTh>
-          <CoinDetailQuoteTh>종가</CoinDetailQuoteTh>
+          <CoinDetailQuoteTh>시가</CoinDetailQuoteTh>
           <CoinDetailQuoteTh>고가</CoinDetailQuoteTh>
           <CoinDetailQuoteTh>저가</CoinDetailQuoteTh>
-          <CoinDetailQuoteTh>시가총액</CoinDetailQuoteTh>
+          <CoinDetailQuoteTh>종가</CoinDetailQuoteTh>
         </tr>
       </thead>
       <tbody>
-        {coinHistoricalData?.map((quote) => (
-          <tr key={`quote ${quote.time_open}`}>
+        {coinTickersData?.map((quote) => (
+          <tr key={`${quote.market} quote ${quote.candle_date_time_utc}`}>
             <CoinDetailQuoteTd style={{ textAlign: "left" }}>
-              {quote.time_open.slice(0, 10)}
+              {quote.candle_date_time_utc.slice(0, 10)}
             </CoinDetailQuoteTd>
             <CoinDetailQuoteTd>
-              {transformMoney.korea(quote.close)}
+              {quote.opening_price.toLocaleString("ko-KR")}
             </CoinDetailQuoteTd>
             <CoinDetailQuoteTd>
-              {transformMoney.korea(quote.high)}
+              {transformMoney.korea(quote.high_price)}
             </CoinDetailQuoteTd>
             <CoinDetailQuoteTd>
-              {transformMoney.korea(quote.low)}
+              {transformMoney.korea(quote.low_price)}
             </CoinDetailQuoteTd>
             <CoinDetailQuoteTd>
-              {(quote.market_cap * 1000).toLocaleString("ko-KR")}
+              {transformMoney.korea(quote.prev_closing_price)}
             </CoinDetailQuoteTd>
           </tr>
         ))}

@@ -4,3 +4,5 @@ export const COIN_DETAIL_CATEGORY = [
   { title: "일별시세" },
   { title: "기업정보" },
 ] as const;
+
+export const COIN_TICKERS_START_DATE = "14" as const;

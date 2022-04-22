@@ -10,7 +10,7 @@ const MainCardList = ({ data }: Props) => {
   return (
     <MainCardListContainer>
       {data?.map((coin) => (
-        <MainCard data={coin} key={coin.id} />
+        <MainCard data={coin} key={coin.market} />
       ))}
     </MainCardListContainer>
   );

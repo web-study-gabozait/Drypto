@@ -1,35 +1,32 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useCallback, useEffect, useState } from "react";
 import CoinDetail from "../../components/coinDetail/CoinDetail";
+import { COIN_TICKERS_START_DATE } from "../../constants/product.constants";
 import useCoin from "../../hooks/coinDetail/useCoin";
 import toast from "../../lib/toast";
 import coinDetailRepository from "../../repository/coinDetail/coinDetail.repository";
 import {
   CoinDetail as CoinDetailType,
-  CoinHistorical,
   CoinTicker as CoinTickerType,
 } from "../../types/common/common.type";
 
 type Props = {
   isClient: boolean;
   ssrCoinDetailData: CoinDetailType | null;
-  ssrCoinTickerData: CoinTickerType | null;
-  ssrCoinHistoricalData: CoinHistorical[] | null;
+  ssrCoinTickersData: CoinTickerType[] | null;
 };
 
 const CoinDetailPage: NextPage<Props> = ({
   isClient,
   ssrCoinDetailData,
-  ssrCoinTickerData,
-  ssrCoinHistoricalData,
+  ssrCoinTickersData,
 }) => {
   const {
     query: { coinid },
   } = useRouter();
 
-  const { coinDetailData, coinTickerData, coinHistoricalData } = useCoin({
+  const { coinDetailData, coinTickersData } = useCoin({
     coinid: coinid as string,
     isClient,
   });
@@ -38,25 +35,25 @@ const CoinDetailPage: NextPage<Props> = ({
     <div>
       <Head>
         <title>{`Dtypto ${
-          ssrCoinDetailData ? ssrCoinDetailData.name : "Coin"
+          ssrCoinDetailData ? ssrCoinDetailData.market : "Coin"
         }`}</title>
         <meta
           name="description"
           content={
             ssrCoinDetailData
-              ? `${ssrCoinDetailData.name}코인의 상세정보 사이트 입니다.`
+              ? `${ssrCoinDetailData.market}코인의 상세정보 사이트 입니다.`
               : `코인 상세정보 사이트 입니다.`
           }
         />
         <meta
           property="og:title"
-          content={ssrCoinDetailData ? ssrCoinDetailData.name : "Coin"}
+          content={ssrCoinDetailData ? ssrCoinDetailData.market : "Coin"}
         />
         <meta
           property="og:description"
           content={
             ssrCoinDetailData
-              ? `${ssrCoinDetailData.name}코인의 상세정보 사이트 입니다.`
+              ? `${ssrCoinDetailData.market}코인의 상세정보 사이트 입니다.`
               : `코인 상세정보 사이트 입니다.`
           }
         />
@@ -64,14 +61,12 @@ const CoinDetailPage: NextPage<Props> = ({
       {isClient ? (
         <CoinDetail
           coinDetailData={coinDetailData!}
-          coinTickerData={coinTickerData!}
-          coinHistoricalData={coinHistoricalData!}
+          coinTickersData={coinTickersData!}
         />
       ) : (
         <CoinDetail
           coinDetailData={ssrCoinDetailData}
-          coinTickerData={ssrCoinTickerData}
-          coinHistoricalData={ssrCoinHistoricalData}
+          coinTickersData={ssrCoinTickersData}
         />
       )}
     </div>
@@ -81,19 +76,9 @@ const CoinDetailPage: NextPage<Props> = ({
 CoinDetailPage.getInitialProps = async ({ query: { coinid } }) => {
   const isServer = typeof window === "undefined";
 
-  const getCoinDetailInfo = async (coinid: string) => {
+  const getCoinDetailData = async (coinid: string) => {
     try {
       const data = await coinDetailRepository.getCoin({ coinid });
-      return data;
-    } catch (error) {
-      toast.error("코인 상세정보 불러오기 실패");
-      return null;
-    }
-  };
-
-  const getCoinTickerInfo = async (coinid: string) => {
-    try {
-      const data = await coinDetailRepository.getCoinTickers({ coinid });
       return data;
     } catch (error) {
       toast.error("코인 상세거래내역 불러오기 실패");
@@ -101,15 +86,10 @@ CoinDetailPage.getInitialProps = async ({ query: { coinid } }) => {
     }
   };
 
-  const getCoinHistoricalInfo = async (
-    coinid: string,
-    endDate: string,
-    startDate: string
-  ) => {
+  const getCoinTickersData = async (coinid: string, startDate: string) => {
     try {
-      const data = await coinDetailRepository.getCoinHistorical({
+      const data = await coinDetailRepository.getCoinTickers({
         coinid,
-        endDate,
         startDate,
       });
 
@@ -121,30 +101,23 @@ CoinDetailPage.getInitialProps = async ({ query: { coinid } }) => {
   };
 
   if (isServer) {
-    const coinDetailData = await getCoinDetailInfo(coinid as string);
-    const coinTickerData = await getCoinTickerInfo(coinid as string);
+    const ssrCoinDetailData = await getCoinDetailData(coinid as string);
 
-    const endDate = Math.floor(Date.now() / 1000);
-    const startDate = endDate - 60 * 60 * 24 * 7 * 2;
-
-    const coinHistorical = await getCoinHistoricalInfo(
+    const ssrCoinTickersData = await getCoinTickersData(
       coinid as string,
-      String(endDate),
-      String(startDate)
+      COIN_TICKERS_START_DATE
     );
 
     return {
       isClient: false,
-      ssrCoinDetailData: coinDetailData,
-      ssrCoinTickerData: coinTickerData,
-      ssrCoinHistoricalData: coinHistorical,
+      ssrCoinDetailData,
+      ssrCoinTickersData,
     };
   } else {
     return {
       isClient: true,
       ssrCoinDetailData: null,
-      ssrCoinTickerData: null,
-      ssrCoinHistoricalData: null,
+      ssrCoinTickersData: null,
     };
   }
 };

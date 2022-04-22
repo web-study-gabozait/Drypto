@@ -14,9 +14,11 @@ type Props = {
 const MainCard = ({ data }: Props) => {
   return (
     <MainCardContainer>
-      <MainCardTitle>{data.name}</MainCardTitle>
+      <MainCardTitle>
+        {data.korean_name}({data.english_name})
+      </MainCardTitle>
       <MainCardDetailButton>
-        <Link href={`/coinDetail/${data.id}`}>
+        <Link href={`/coinDetail/${data.market}`}>
           <a>
             <p>자세히 보기</p>
           </a>

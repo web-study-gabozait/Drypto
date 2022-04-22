@@ -1,31 +1,15 @@
 import customAxios from "../../lib/axios";
 import {
-  CoinHistoricalResponse,
   CoinResponse,
-  CoinTickerResponse,
+  CoinTickersResponse,
 } from "../../types/coinDetail/coinDetail.type";
-import {
-  GetCoinHistoricalParam,
-  GetCoinParam,
-  GetCoinTickerParam,
-} from "./coinDetail.param";
+import { GetCoinParam, GetCoinTickersParam } from "./coinDetail.param";
 
 class CoinRepository {
   public async getCoin({ coinid }: GetCoinParam): Promise<CoinResponse | null> {
     try {
-      const { data } = await customAxios.get<CoinResponse>(`/coins/${coinid}`);
-      return data;
-    } catch (error) {
-      return null;
-    }
-  }
-
-  public async getCoinTickers({
-    coinid,
-  }: GetCoinTickerParam): Promise<CoinTickerResponse | null> {
-    try {
-      const { data } = await customAxios.get<CoinTickerResponse>(
-        `/tickers/${coinid}`
+      const { data } = await customAxios.get<CoinResponse>(
+        `/ticker?markets=${coinid}`
       );
 
       return data;
@@ -34,14 +18,13 @@ class CoinRepository {
     }
   }
 
-  public async getCoinHistorical({
+  public async getCoinTickers({
     coinid,
-    endDate,
     startDate,
-  }: GetCoinHistoricalParam): Promise<CoinHistoricalResponse | null> {
+  }: GetCoinTickersParam): Promise<CoinTickersResponse | null> {
     try {
-      const { data } = await customAxios.get<CoinHistoricalResponse>(
-        `/coins/${coinid}/ohlcv/historical?start=${startDate}&end=${endDate}`
+      const { data } = await customAxios.get<CoinTickersResponse>(
+        `/candles/days?market=${coinid}&count=${startDate}`
       );
 
       return data;

@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import { palette } from "../../styles/palette";
-import { CoinHistorical } from "../../types/common/common.type";
+import { CoinTicker } from "../../types/common/common.type";
 import { CoinDetailTopTitle } from "./style";
 import dynamic from "next/dynamic";
 
 const ApexCharts = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 type Props = {
-  coinHistoricalData: CoinHistorical[];
+  coinTickersData: CoinTicker[];
 };
 
-const CoinDetailChart = ({ coinHistoricalData }: Props) => {
+const CoinDetailChart = ({ coinTickersData }: Props) => {
   return (
     <ChartWrap>
       <CoinDetailTopTitle>시가 차트</CoinDetailTopTitle>
@@ -20,7 +20,7 @@ const CoinDetailChart = ({ coinHistoricalData }: Props) => {
           series={[
             {
               name: "시세",
-              data: coinHistoricalData?.map((price) => price.market_cap),
+              data: coinTickersData?.map((price) => price.prev_closing_price),
             },
           ]}
           options={{
@@ -34,7 +34,9 @@ const CoinDetailChart = ({ coinHistoricalData }: Props) => {
             colors: [palette.main],
             xaxis: {
               type: "datetime",
-              categories: coinHistoricalData?.map((price) => price.time_close),
+              categories: coinTickersData?.map(
+                (price) => price.candle_date_time_utc
+              ),
               labels: {
                 style: {
                   colors: "white",

@@ -2,12 +2,7 @@ export type GetCoinParam = {
   coinid: string;
 };
 
-export type GetCoinTickerParam = {
+export type GetCoinTickersParam = {
   coinid: string;
-};
-
-export type GetCoinHistoricalParam = {
-  coinid: string;
-  endDate: string;
   startDate: string;
 };

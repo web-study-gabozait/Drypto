@@ -1,7 +1,5 @@
-import { CoinDetail, CoinHistorical, CoinTicker } from "../common/common.type";
+import { CoinDetail, CoinTicker } from "../common/common.type";
 
 export type CoinResponse = Response & CoinDetail;
 
-export type CoinTickerResponse = Response & CoinTicker;
-
-export type CoinHistoricalResponse = Response & CoinHistorical[];
+export type CoinTickersResponse = Response & CoinTicker[];
