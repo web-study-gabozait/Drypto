@@ -2,31 +2,37 @@ import { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import CoinDetail from "../../components/coinDetail/CoinDetail";
-import { COIN_TICKERS_START_DATE } from "../../constants/product.constants";
+import {
+  COIN_TICKERS_START_DATE,
+  COIN_TRADES_MAX_NUM,
+} from "../../constants/product.constants";
 import useCoin from "../../hooks/coinDetail/useCoin";
 import toast from "../../lib/toast";
 import coinDetailRepository from "../../repository/coinDetail/coinDetail.repository";
 import {
   CoinDetail as CoinDetailType,
   CoinTicker as CoinTickerType,
+  CoinTrade,
 } from "../../types/common/common.type";
 
 type Props = {
   isClient: boolean;
   ssrCoinDetailData: CoinDetailType | null;
   ssrCoinTickersData: CoinTickerType[] | null;
+  ssrCoinTradesData: CoinTrade[] | null;
 };
 
 const CoinDetailPage: NextPage<Props> = ({
   isClient,
   ssrCoinDetailData,
   ssrCoinTickersData,
+  ssrCoinTradesData,
 }) => {
   const {
     query: { coinid },
   } = useRouter();
 
-  const { coinDetailData, coinTickersData } = useCoin({
+  const { coinDetailData, coinTickersData, coinTradesData } = useCoin({
     coinid: coinid as string,
     isClient,
   });
@@ -62,11 +68,13 @@ const CoinDetailPage: NextPage<Props> = ({
         <CoinDetail
           coinDetailData={coinDetailData!}
           coinTickersData={coinTickersData!}
+          coinTradesData={coinTradesData!}
         />
       ) : (
         <CoinDetail
           coinDetailData={ssrCoinDetailData}
           coinTickersData={ssrCoinTickersData}
+          coinTradesData={ssrCoinTradesData}
         />
       )}
     </div>
@@ -100,6 +108,16 @@ CoinDetailPage.getInitialProps = async ({ query: { coinid } }) => {
     }
   };
 
+  const getCoinTradesData = async (coinid: string, maxNum: string) => {
+    try {
+      const data = await coinDetailRepository.getCoinTrades({ coinid, maxNum });
+      return data;
+    } catch (error) {
+      toast.error("코인 최근체결내역 불러오기 실패");
+      return null;
+    }
+  };
+
   if (isServer) {
     const ssrCoinDetailData = await getCoinDetailData(coinid as string);
 
@@ -108,16 +126,23 @@ CoinDetailPage.getInitialProps = async ({ query: { coinid } }) => {
       COIN_TICKERS_START_DATE
     );
 
+    const ssrCoinTradesData = await getCoinTradesData(
+      coinid as string,
+      COIN_TRADES_MAX_NUM
+    );
+
     return {
       isClient: false,
       ssrCoinDetailData,
       ssrCoinTickersData,
+      ssrCoinTradesData,
     };
   } else {
     return {
       isClient: true,
       ssrCoinDetailData: null,
       ssrCoinTickersData: null,
+      ssrCoinTradesData: null,
     };
   }
 };

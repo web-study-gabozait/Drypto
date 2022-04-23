@@ -4,6 +4,7 @@ import { COIN_DETAIL_CATEGORY } from "../../constants/product.constants";
 import {
   CoinDetail as CoinDetailType,
   CoinTicker as CoinTickerType,
+  CoinTrade,
 } from "../../types/common/common.type";
 import transformMoney from "../../util/transformMoney";
 import CoinDetailChart from "./CoinDetailChart";
@@ -21,21 +22,28 @@ import {
   CoinDetailTopInfoWrap,
   CoinDetailTopInfoItem,
   CoinDetailVLine,
-  CoinDetailMiddleBox,
+  CoinDetailMiddleWrap,
   CoinDetailMiddleCategoryWrap,
   CoinDetailMiddleCategoryItem,
   CoinDetailTopChangeWrap,
   CoinDetailTopChangePoint,
   CoinDetailTopChangeValue,
+  CoinDetailMiddleLeftWrap,
+  CoinDetailMiddleRightWrap,
 } from "./style";
 
 type Props = {
   coinDetailData: CoinDetailType | null;
   coinTickersData: CoinTickerType[] | null;
+  coinTradesData: CoinTrade[] | null;
 };
 
-const CoinDetail = ({ coinDetailData, coinTickersData }: Props) => {
-  console.log(coinDetailData, coinTickersData);
+const CoinDetail = ({
+  coinDetailData,
+  coinTickersData,
+  coinTradesData,
+}: Props) => {
+  console.log(coinDetailData, coinTickersData, coinTradesData);
 
   const [category, setCategory] = useState("일별시세");
 
@@ -86,22 +94,25 @@ const CoinDetail = ({ coinDetailData, coinTickersData }: Props) => {
           </>
         )}
       </CoinDetailTopBox>
-      <CoinDetailMiddleBox>
-        <CoinDetailMiddleCategoryWrap>
-          {COIN_DETAIL_CATEGORY.map((item) => (
-            <CoinDetailMiddleCategoryItem
-              isSelect={category === item.title}
-              key={`coinDetail_${item.title}`}
-              onClick={() => setCategory(item.title)}
-            >
-              {item.title}
-            </CoinDetailMiddleCategoryItem>
-          ))}
-        </CoinDetailMiddleCategoryWrap>
-        {category === "일별시세" && (
-          <CoinDetailQuote coinTickersData={coinTickersData} />
-        )}
-      </CoinDetailMiddleBox>
+      <CoinDetailMiddleWrap>
+        <CoinDetailMiddleLeftWrap>
+          <CoinDetailMiddleCategoryWrap>
+            {COIN_DETAIL_CATEGORY.map((item) => (
+              <CoinDetailMiddleCategoryItem
+                isSelect={category === item.title}
+                key={`coinDetail_${item.title}`}
+                onClick={() => setCategory(item.title)}
+              >
+                {item.title}
+              </CoinDetailMiddleCategoryItem>
+            ))}
+          </CoinDetailMiddleCategoryWrap>
+          {category === "일별시세" && (
+            <CoinDetailQuote coinTickersData={coinTickersData} />
+          )}
+        </CoinDetailMiddleLeftWrap>
+        <CoinDetailMiddleRightWrap></CoinDetailMiddleRightWrap>
+      </CoinDetailMiddleWrap>
     </>
   );
 };

@@ -2,9 +2,14 @@ import customAxios from "../../lib/axios";
 import {
   CoinResponse,
   CoinTickersResponse,
+  CoinTradesResponse,
 } from "../../types/coinDetail/coinDetail.type";
 import { CoinDetail } from "../../types/common/common.type";
-import { GetCoinParam, GetCoinTickersParam } from "./coinDetail.param";
+import {
+  GetCoinParam,
+  GetCoinTickersParam,
+  GetCoinTradesParam,
+} from "./coinDetail.param";
 
 class CoinRepository {
   public async getCoin({ coinid }: GetCoinParam): Promise<CoinResponse | null> {
@@ -28,6 +33,20 @@ class CoinRepository {
         `/candles/days?market=${coinid}&count=${startDate}`
       );
 
+      return data;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  public async getCoinTrades({
+    coinid,
+    maxNum,
+  }: GetCoinTradesParam): Promise<CoinTradesResponse | null> {
+    try {
+      const { data } = await customAxios.get<CoinTradesResponse>(
+        `/trades/ticks?market=${coinid}&count=${maxNum}`
+      );
       return data;
     } catch (error) {
       return null;

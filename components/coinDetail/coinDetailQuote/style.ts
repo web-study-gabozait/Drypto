@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { palette } from "../../../styles/palette";
 
 export const CoinDetailQuoteTable = styled.table`
   width: 100%;
@@ -19,8 +20,27 @@ export const CoinDetailQuoteTh = styled.th`
   text-align: right;
 `;
 
-export const CoinDetailQuoteTd = styled.td`
+export const CoinDetailQuoteTd = styled.td<{
+  change?: number;
+}>`
   padding: 9px 20px 12px;
   text-align: right;
   color: ${({ theme }) => theme.contrast};
+
+  ${({ change }) =>
+    change! > 0 &&
+    css`
+      color: ${palette.red[300]};
+    `};
+
+  ${({ change }) =>
+    change! < 0 &&
+    css`
+      color: ${palette.blue[700]};
+    `}
+  ${({ change }) =>
+    change! === 0 &&
+    css`
+      color: ${({ theme }) => theme.contrast};
+    `}
 `;

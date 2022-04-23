@@ -124,8 +124,14 @@ export const CoinDetailTopInfoItem = styled.div`
   }
 `;
 
-export const CoinDetailMiddleBox = styled.div`
-  width: 770px;
+export const CoinDetailMiddleWrap = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const CoinDetailMiddleLeftWrap = styled.div`
+  min-width: 770px;
   display: flex;
   flex-direction: column;
 `;
@@ -162,4 +168,11 @@ export const CoinDetailMiddleCategoryItem = styled.div<{ isSelect: boolean }>`
       : css`
           color: ${palette.gray[200]};
         `}
+`;
+
+export const CoinDetailMiddleRightWrap = styled.div`
+  margin-top: 31px;
+  width: 318px;
+  display: flex;
+  flex-direction: column;
 `;

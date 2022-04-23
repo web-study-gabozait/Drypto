@@ -35,7 +35,9 @@ const CoinDetailQuote = ({ coinTickersData }: Props) => {
             <CoinDetailQuoteTd>{quote.opening_price}</CoinDetailQuoteTd>
             <CoinDetailQuoteTd>{quote.high_price}</CoinDetailQuoteTd>
             <CoinDetailQuoteTd>{quote.low_price}</CoinDetailQuoteTd>
-            <CoinDetailQuoteTd>{quote.prev_closing_price}</CoinDetailQuoteTd>
+            <CoinDetailQuoteTd change={quote.change_price}>
+              {quote.prev_closing_price}
+            </CoinDetailQuoteTd>
           </tr>
         ))}
       </tbody>

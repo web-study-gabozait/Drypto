@@ -6,3 +6,5 @@ export const COIN_DETAIL_CATEGORY = [
 ] as const;
 
 export const COIN_TICKERS_START_DATE = "14" as const;
+
+export const COIN_TRADES_MAX_NUM = "7" as const;
