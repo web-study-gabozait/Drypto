@@ -1,5 +1,6 @@
 import { CoinTicker } from "../../../types/common/common.type";
 import transformMoney from "../../../util/transformMoney";
+import ValuePoint from "../../common/valuePoint/ValuePoint";
 import {
   CoinDetailQuoteTable,
   CoinDetailQuoteTd,
@@ -36,7 +37,16 @@ const CoinDetailQuote = ({ coinTickersData }: Props) => {
             <CoinDetailQuoteTd>{quote.high_price}</CoinDetailQuoteTd>
             <CoinDetailQuoteTd>{quote.low_price}</CoinDetailQuoteTd>
             <CoinDetailQuoteTd change={quote.change_price}>
-              {quote.prev_closing_price}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "end",
+                }}
+              >
+                <ValuePoint change_price={quote.change_price} />
+                {quote.prev_closing_price}
+              </div>
             </CoinDetailQuoteTd>
           </tr>
         ))}

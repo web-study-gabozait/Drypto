@@ -9,6 +9,7 @@ import {
 import transformMoney from "../../util/transformMoney";
 import CoinDetailChart from "./CoinDetailChart";
 import CoinDetailQuote from "./coinDetailQuote/CoinDetailTable";
+import CoinDetailTrade from "./coinDetailTrade/CoinDetailTrade";
 
 import {
   CoinDetailHLine,
@@ -111,7 +112,9 @@ const CoinDetail = ({
             <CoinDetailQuote coinTickersData={coinTickersData} />
           )}
         </CoinDetailMiddleLeftWrap>
-        <CoinDetailMiddleRightWrap></CoinDetailMiddleRightWrap>
+        <CoinDetailMiddleRightWrap>
+          <CoinDetailTrade coinTradesData={coinTradesData} />
+        </CoinDetailMiddleRightWrap>
       </CoinDetailMiddleWrap>
     </>
   );

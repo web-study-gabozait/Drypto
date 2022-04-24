@@ -7,7 +7,7 @@ export const CoinDetailQuoteTable = styled.table`
   letter-spacing: -0.4px;
   margin-top: 6px;
 
-  background-color: ${({ theme }) => theme.coinCardBg};
+  background-color: ${({ theme }) => theme.subBackgroundColor};
 `;
 
 export const CoinDetailQuoteTh = styled.th`
@@ -30,7 +30,7 @@ export const CoinDetailQuoteTd = styled.td<{
   ${({ change }) =>
     change! > 0 &&
     css`
-      color: ${palette.red[300]};
+      color: ${palette.red[500]};
     `};
 
   ${({ change }) =>

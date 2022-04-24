@@ -69,7 +69,7 @@ export const CoinDetailTopChangePoint = styled.span<{
     change === "RISE" &&
     css`
       transform: rotate(-180deg);
-      border-color: ${palette.red[300]} transparent transparent transparent;
+      border-color: ${palette.red[500]} transparent transparent transparent;
     `};
 
   ${({ change }) =>
