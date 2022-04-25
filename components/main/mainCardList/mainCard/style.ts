@@ -11,11 +11,26 @@ export const MainCardContainer = styled.div`
   padding: 20px;
 `;
 
+export const MainCardTitleWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export const MainCardTitle = styled.h1`
   font-size: 14px;
   line-height: 1.86;
   font-weight: 700;
   color: ${({ theme }) => theme.contrast};
+`;
+
+export const MainCardFavIcon = styled.div`
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 `;
 
 export const MainCardDetailButton = styled.button`

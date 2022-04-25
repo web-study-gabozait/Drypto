@@ -21,7 +21,7 @@ const TemplateContainer = styled.div`
 `;
 
 const TemplateChildrenWrap = styled.div`
-  width: 1130px;
+  width: 1052px;
   min-height: calc(100vh - 74px);
   height: auto;
   display: flex;

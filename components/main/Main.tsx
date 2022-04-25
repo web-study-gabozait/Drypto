@@ -1,5 +1,6 @@
 import { Coin } from "../../types/common/common.type";
 import MainCardList from "./mainCardList/MainCardList";
+import MainFavoriteCardList from "./mainFavoriteCardList/MainFavoriteCardList";
 import { MainContainer } from "./style";
 
 type Props = {
@@ -10,6 +11,7 @@ const Main = ({ data }: Props) => {
   return (
     <MainContainer>
       <MainCardList data={data === null ? null : data} />
+      <MainFavoriteCardList />
     </MainContainer>
   );
 };

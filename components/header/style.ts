@@ -9,7 +9,7 @@ export const HeaderContainer = styled.div`
 `;
 
 export const HeaderWrap = styled.div`
-  width: 1130px;
+  width: 1052px;
   height: 100%;
   display: flex;
   align-items: center;
