@@ -7,6 +7,7 @@ import {
   MainFavCardTitle,
 } from "./style";
 import { FiArrowRight } from "@react-icons/all-files/fi/FiArrowRight";
+import React from "react";
 
 type Props = {
   data: Coin;
@@ -14,8 +15,6 @@ type Props = {
 
 const MainFavoriteCard = ({ data }: Props) => {
   const imgSrc = data.market.split("-")[1].toLowerCase();
-
-  console.log(imgSrc);
 
   return (
     <Link href={`/coinDetail/${data.market}`}>

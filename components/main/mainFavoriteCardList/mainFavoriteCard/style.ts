@@ -1,14 +1,15 @@
 import styled from "styled-components";
+import { palette } from "../../../../styles/palette";
 
 export const MainFavCardContainer = styled.div`
   width: 100%;
   height: 60px;
-  background-color: ${({ theme }) => theme.coinCardBg};
   border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.03);
   display: flex;
   align-items: center;
   padding: 10px;
+  background-color: ${({ theme }) => theme.backgroundColor2};
+  border: 1px solid rgba(0, 0, 0, 0.03);
 `;
 
 export const MainFavCardIcon = styled.img`
