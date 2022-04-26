@@ -38,6 +38,7 @@ const indigo = {
 };
 
 const blue = {
+  "10": "#f3f9fe",
   "50": "#e3f2fd",
   "100": "#bbdefb",
   "200": "#90caf9",

@@ -6,6 +6,7 @@ declare module "styled-components" {
     subBackgroundColor: string;
     coinCardBg: string;
     contrast: string;
+    subContrast: string;
     subText: string;
   }
 }

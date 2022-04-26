@@ -31,6 +31,8 @@ export const MainCardFavIcon = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+  color: ${({ theme }) => theme.contrast};
 `;
 
 export const MainCardDetailButton = styled.button`

@@ -8,6 +8,7 @@ export const lightTheme: DefaultTheme = {
   subBackgroundColor: "#ffffff",
   coinCardBg: "#f9fafb",
   contrast: "#000000",
+  subContrast: "#ffffff",
   subText: "#dbdbdb",
 };
 
@@ -17,5 +18,6 @@ export const darkTheme: DefaultTheme = {
   subBackgroundColor: "#262626",
   coinCardBg: "#262626",
   contrast: "#ffffff",
+  subContrast: "#000000",
   subText: "#dbdbdb",
 };

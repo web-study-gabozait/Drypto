@@ -10,8 +10,8 @@ type Props = {
 const Main = ({ data }: Props) => {
   return (
     <MainContainer>
-      <MainCardList data={data === null ? null : data} />
-      <MainFavoriteCardList />
+      <MainCardList data={data} />
+      <MainFavoriteCardList data={data} />
     </MainContainer>
   );
 };

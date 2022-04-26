@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useResetRecoilState } from "recoil";
 import { LOCAL_FAVORITES_KEY } from "../../constants/localStorage.contants";
 import { mainFavoriteAtom } from "../../store/main/main.store";
 import local from "../../util/local";
@@ -11,6 +11,8 @@ type Props = {
 
 const useFavorites = ({ pick, setPick }: Props) => {
   const [favorites, setFavorites] = useRecoilState(mainFavoriteAtom);
+
+  const resetFavorites = useResetRecoilState(mainFavoriteAtom);
 
   const handlePick = (coinid: string) => {
     handleFavorites(coinid, pick);
@@ -38,9 +40,15 @@ const useFavorites = ({ pick, setPick }: Props) => {
     }
   };
 
+  const removeAllFavoritesv = () => {
+    resetFavorites();
+    local.set(LOCAL_FAVORITES_KEY, JSON.stringify([]));
+  };
+
   return {
     pick,
     handlePick,
+    removeAllFavoritesv,
   };
 };
 

@@ -32,7 +32,7 @@ export const CoinDetailTopBox = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 `;
 
 export const CoinDetailTopName = styled.h1`
@@ -127,11 +127,11 @@ export const CoinDetailTopInfoItem = styled.div`
 export const CoinDetailMiddleWrap = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  column-gap: 20px;
 `;
 
 export const CoinDetailMiddleLeftWrap = styled.div`
-  min-width: 770px;
+  width: 100%;
   display: flex;
   flex-direction: column;
 `;
@@ -172,7 +172,7 @@ export const CoinDetailMiddleCategoryItem = styled.div<{ isSelect: boolean }>`
 
 export const CoinDetailMiddleRightWrap = styled.div`
   margin-top: 31px;
-  width: 318px;
+  min-width: 318px;
   display: flex;
   flex-direction: column;
 `;
