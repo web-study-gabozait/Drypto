@@ -21,8 +21,8 @@ const MainFavoriteCard = ({ data }: Props) => {
       <a>
         <MainFavCardContainer>
           <MainFavCardIcon
-            src={`https://cryptoicons.org/api/icon/${imgSrc}/25 `}
-            alt={`fovorite coin ${imgSrc}image`}
+            src={`https://cryptoicons.org/api/icon/${imgSrc}/25`}
+            alt={`favorite coin ${imgSrc} image`}
           />
           <MainFavCardTitle>
             {data.korean_name}({data.english_name})

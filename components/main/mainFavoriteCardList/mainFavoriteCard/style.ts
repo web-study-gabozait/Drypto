@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { palette } from "../../../../styles/palette";
 
 export const MainFavCardContainer = styled.div`
   width: 100%;

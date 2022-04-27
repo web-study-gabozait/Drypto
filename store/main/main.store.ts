@@ -9,3 +9,8 @@ export const mainFavoriteAtom = atom<string[]>({
       ? []
       : JSON.parse(local.get(LOCAL_FAVORITES_KEY) as string),
 });
+
+export const mainNewsAtom = atom<any[]>({
+  key: "mainNewsAtom",
+  default: [],
+});
