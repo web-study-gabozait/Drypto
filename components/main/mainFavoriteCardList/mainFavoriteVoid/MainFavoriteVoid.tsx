@@ -4,7 +4,7 @@ import {
   MainFavoriteVoidTitle,
   MainFavoriteVoidwWrap,
 } from "./style";
-import { MdInfoOutline } from "@react-icons/all-files/md/MdInfoOutline";
+import { MdInfoOutline } from "react-icons/md";
 const MainFavoriteVoid = () => {
   return (
     <MainFavoriteVoidContainer>

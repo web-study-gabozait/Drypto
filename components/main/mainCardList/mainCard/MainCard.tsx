@@ -6,9 +6,9 @@ import {
   MainCardTitle,
   MainCardTitleWrap,
 } from "./style";
-import { FiArrowRight } from "@react-icons/all-files/fi/FiArrowRight";
-import { FaRegStar } from "@react-icons/all-files/fa/FaRegStar";
-import { FaStar } from "@react-icons/all-files/fa/FaStar";
+import { FaStar, FaRegStar } from "react-icons/fa";
+import { FiArrowRight } from "react-icons/fi";
+
 import Link from "next/link";
 import useFavorites from "../../../../hooks/main/useFavorites";
 import { useRecoilValue } from "recoil";

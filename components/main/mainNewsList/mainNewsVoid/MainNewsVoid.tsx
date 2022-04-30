@@ -4,7 +4,7 @@ import {
   MainNewsVoidWrap,
   MainNewsVoidTitle,
 } from "./style";
-import { MdDescription } from "@react-icons/all-files/md/MdDescription";
+import { MdDescription } from "react-icons/md";
 
 const MainNewsVoid = () => {
   return (

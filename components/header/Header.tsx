@@ -6,10 +6,9 @@ import {
   HeaderUtilItemWrap,
   HeaderWrap,
 } from "./style";
-import { FiSun } from "@react-icons/all-files/fi/FiSun";
-import { FiUser } from "@react-icons/all-files/fi/FiUser";
-import { HiOutlineMoon } from "@react-icons/all-files/hi/HiOutlineMoon";
 import Logo from "./Logo";
+import { FiSun, FiUser } from "react-icons/fi";
+import { HiOutlineMoon } from "react-icons/hi";
 
 const Header = () => {
   const { theme, toggleChangeTheme } = useTheme();

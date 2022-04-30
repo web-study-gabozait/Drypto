@@ -6,8 +6,8 @@ import {
   MAinFavCardRedirectButton,
   MainFavCardTitle,
 } from "./style";
-import { FiArrowRight } from "@react-icons/all-files/fi/FiArrowRight";
 import React from "react";
+import { FiArrowRight } from "react-icons/fi";
 
 type Props = {
   data: Coin;

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useRecoilState, useResetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { mainFavoriteAtom } from "../../../store/main/main.store";
 import { Coin } from "../../../types/common/common.type";
 import MainFavoriteCard from "./mainFavoriteCard/MainFavoriteCard";
@@ -11,8 +11,8 @@ import {
   MainFavCardLabel,
   MainFavCardLabelIcon,
 } from "./style";
-import { FaTrash } from "@react-icons/all-files/fa/faTrash";
-import { FcViewDetails } from "@react-icons/all-files/fc/FcViewDetails";
+import { FaTrash } from "react-icons/fa";
+import { FcViewDetails } from "react-icons/fc";
 import local from "../../../util/local";
 import { LOCAL_FAVORITES_KEY } from "../../../constants/localStorage.contants";
 import MainFavoriteVoid from "./mainFavoriteVoid/MainFavoriteVoid";

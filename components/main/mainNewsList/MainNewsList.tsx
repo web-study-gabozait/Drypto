@@ -6,7 +6,7 @@ import {
   MainNewsListLabelIcon,
   MainNewsListWrap,
 } from "./style";
-import { FcNews } from "@react-icons/all-files/fc/FcNews";
+import { FcNews } from "react-icons/fc";
 import dayjs from "dayjs";
 import { useRecoilValue } from "recoil";
 import { mainNewsAtom } from "../../../store/main/main.store";
