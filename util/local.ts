@@ -12,7 +12,7 @@ class local {
   }
 
   public static remove(key: string): void {
-    localStorage.remove(key);
+    localStorage.removeItems(key);
   }
 }
 
